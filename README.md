@@ -20,6 +20,7 @@ npm install
 
 ## Configuration
 
+
 Add this configuration to your config/config.js file:
 
 ```javascript
@@ -36,6 +37,13 @@ Add this configuration to your config/config.js file:
 }
 ```
 ## Configuration Options
+
+| Option | Description | Default Value |
+|--------|-------------|---------------|
+| `stopId` | Entur StopPlace ID | Required |
+| `destination` | Destination to filter for | Required |
+| `numberOfDepartures` | Number of departures to show | 3 |
+| `updateInterval` | Update frequency in milliseconds | 60000 |
 
 ## Finding Stop IDs
 You can find stop IDs by searching on Entur's Stop Place Register.
