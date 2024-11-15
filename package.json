@@ -1,0 +1,26 @@
+{
+  "name": "mmm-bustimesruter",
+  "version": "1.0.0",
+  "description": "MagicMirror² module for displaying bus times from Entur API for Norwegian public transport (Ruter)",
+  "main": "MMM-BusTimesRuter.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trymthoren/MMM-BusTimesRuter.git"
+  },
+  "keywords": [
+    "magicmirror",
+    "smartmirror",
+    "bus",
+    "public transport",
+    "norway",
+    "entur",
+    "ruter",
+    "bus times"
+  ],
+  "author": "Trym Thorén",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trymthoren/MMM-BusTimesRuter/issues"
+  },
+  "homepage": "https://github.com/trymthoren/MMM-BusTimesRuter#readme"
+}
