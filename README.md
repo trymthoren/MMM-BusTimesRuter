@@ -10,7 +10,7 @@ A [MagicMirror²](https://github.com/MichMich/MagicMirror) module that displays 
 - Simple and clean display
 
 ## Screenshot
-![MMM-BusTimesRuter Screenshot](screenshots/screen1.png)
+![MMM-BusTimesRuter Screenshot](screen1.png)
 
 ## Installation
 
