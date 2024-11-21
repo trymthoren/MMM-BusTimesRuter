@@ -5,12 +5,14 @@ module.exports = NodeHelper.create({
    start: function() {
        console.log("Starting node helper for: MMM-BusTimesRuter");
    },
+
    socketNotificationReceived: function(notification, payload) {
        if (notification === "GET_DEPARTURES") {
            console.log("Received request for departures:", payload);
            this.fetchDepartures(payload);
        }
    },
+
    fetchDepartures: function(config) {
        console.log("Fetching departures for stop:", config.stopId);
        
@@ -36,15 +38,15 @@ module.exports = NodeHelper.create({
 
        const options = {
            hostname: 'api.entur.io',
-           path: '/journey-planner/v3/graphql',  // Updated to v3
+           path: '/journey-planner/v3/graphql',
            method: 'POST',
            headers: {
                'ET-Client-Name': 'trymthoren-magicmirror-bustimesruter',
                'Content-Type': 'application/json',
-               'Accept': 'application/json',  // Added Accept header
+               'Accept': 'application/json',
                'Content-Length': requestData.length,
-               'Cache-Control': 'no-cache',  // Added cache control
-               'ET-Client-ID': 'trymthoren-magicmirror-bustimesruter'  // Added Client ID
+               'Cache-Control': 'no-cache',
+               'ET-Client-ID': 'trymthoren-magicmirror-bustimesruter'
            }
        };
 
@@ -53,6 +55,7 @@ module.exports = NodeHelper.create({
            res.on('data', (chunk) => {
                data += chunk;
            });
+
            res.on('end', () => {
                try {
                    console.log("Raw response:", data);
@@ -62,7 +65,9 @@ module.exports = NodeHelper.create({
                        const departures = jsonData.data.stopPlace.estimatedCalls
                            .filter(call => {
                                const dest = call.destinationDisplay.frontText.toLowerCase();
-                               return dest.includes('fredrikstad') || dest.includes('fr.stad');
+                               const configDest = config.destination.toLowerCase();
+                               const configDestShort = config.destinationShort.toLowerCase();
+                               return dest.includes(configDest) || dest.includes(configDestShort);
                            })
                            .map(call => ({
                                expectedDepartureTime: call.expectedDepartureTime,
