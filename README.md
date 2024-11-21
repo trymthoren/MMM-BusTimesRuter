@@ -1,19 +1,18 @@
 # MMM-BusTimesRuter
-
 A [MagicMirror²](https://github.com/MichMich/MagicMirror) module that displays bus times from the Entur API for Norwegian public transport (Ruter).
 
 ## Features
 - Displays next bus departures from specified stop
 - Shows real-time updates
-- Filters for specific destination
+- Filters for specific destination (supports both full and abbreviated names)
 - Updates every minute
 - Simple and clean display
+- Customizable styling
 
 ## Screenshot
 ![MMM-BusTimesRuter Screenshot](screen1.png)
 
 ## Installation
-
 ```bash
 cd ~/MagicMirror/modules
 git clone https://github.com/trymthoren/MMM-BusTimesRuter.git
