@@ -61,12 +61,24 @@ module.exports = NodeHelper.create({
                    console.log("Raw response:", data);
                    const jsonData = JSON.parse(data);
                    console.log("Parsed response:", JSON.stringify(jsonData, null, 2));
+                   
                    if (jsonData.data && jsonData.data.stopPlace && jsonData.data.stopPlace.estimatedCalls) {
                        const departures = jsonData.data.stopPlace.estimatedCalls
                            .filter(call => {
+                               // More flexible matching
                                const dest = call.destinationDisplay.frontText.toLowerCase();
-                               const configDest = config.destination.toLowerCase();
+                               const configDest = config.destination.toLowerCase().replace(' bussterminal', '');
                                const configDestShort = config.destinationShort.toLowerCase();
+                               
+                               // Debug logging
+                               console.log("Destination check:", {
+                                   dest,
+                                   configDest,
+                                   configDestShort,
+                                   matchesDest: dest.includes(configDest),
+                                   matchesShort: dest.includes(configDestShort)
+                               });
+
                                return dest.includes(configDest) || dest.includes(configDestShort);
                            })
                            .map(call => ({
